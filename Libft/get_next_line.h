@@ -29,17 +29,17 @@ typedef struct g_list
 {
 	char			*content;
 	struct g_list	*next;
-}					x_list;
+}					t_lst;
 
-x_list	*ft_lstnewnew(char *content, x_list *lst, int boolean);
-char	*ft_lstaddback(x_list **lst, x_list *new, char *west, int boolean);
-int		ft_strlenfree(char *str, x_list *tab, int boolean);
-int		ft_lstiternew(x_list *lst, int (*f)(char *, x_list *tab, int boolean));
-char	*fillstr(x_list *tab, int index);
+t_lst	*ft_lstnewnew(char *content, t_lst *lst, int boolean);
+char	*ft_lstaddback(t_lst **lst, t_lst *new, char *west, int boolean);
+int		ft_strlenfree(char *str, t_lst *tab, int boolean);
+int		ft_lstiternew(t_lst *lst, int (*f)(char *, t_lst *tab, int boolean));
+char	*fillstr(t_lst *tab, int index);
 char	*get_next_line(int fd);
 int		checkbuffer(char c, char const *set);
-char	*readit(int fd, char *west, x_list **tab);
+char	*readit(int fd, char *west, t_lst **tab);
 int		writetemp(char *temp, char *str, int boolean);
-char	*westigation(char *west, char *buffer, x_list **tab, int boolean);
+char	*westigation(char *west, char *buffer, t_lst **tab, int boolean);
 
 #endif

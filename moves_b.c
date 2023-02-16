@@ -1,43 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves_b.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 02:40:37 by wfreulon          #+#    #+#             */
+/*   Updated: 2023/02/16 00:57:03 by wfreulon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	swapb(t_list *lst)
+void	swapb(t_list **lst)
 {
 	t_list	*temp;
-
-	temp = lst;
-	temp->content = lst->content;
-	lst->content = lst->next;
-	lst->next = temp->content;
+	
+	temp = (*lst)->next;
+	(*lst)->next = temp->next;
+	ft_lstadd_front(lst, temp);
 	return ;
 }
 
-void	pushb(t_list *lstb, t_list *lsta)
+void	pushb(t_list **lsta, t_list **lstb)
 {
-	ft_lstadd_front(&lstb, lsta);
-	lsta->content = NULL;
-	free(lsta);
+	t_list	*temp;
+	
+	temp = *lsta;
+	*lsta = (*lsta)->next;
+	ft_lstadd_front(lstb, temp);
 	return ;
 }
 
-void	rotateb(t_list *lst)
+void	rotateb(t_list **lst)
 {
 	t_list	*temp;
 
-	temp = lst;
-	ft_lstadd_back(&lst, temp);
-	lst->content = NULL;
-	free(lst);
+	temp = *lst;
+	*lst = (*lst)->next;
+	temp->next = NULL;
+	ft_lstadd_back(lst, temp);
 	return ;
 }
 
-void	reverserb(t_list *lst)
+void	reverserb(t_list **lst)
 {
 	t_list	*temp;
+	t_list	*tmp;
 
-	temp = ft_lstlast(lst);
-	ft_lstadd_front(&lst, temp);
-	lst = ft_lstlast(lst);
-	lst->content = NULL;
-	free(lst);
+	tmp = *lst;
+	temp = ft_lstlast(*lst);
+	while (tmp->next != temp)
+		tmp = tmp->next;
+	tmp->next = NULL;
+	ft_lstadd_front(lst, temp);
 	return ;
 }

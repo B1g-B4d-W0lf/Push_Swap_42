@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*fillstr(x_list *tab, int index)
+char	*fillstr(t_lst *tab, int index)
 {
 	int		i;
 	int		j;
@@ -67,7 +67,7 @@ int	writetemp(char *temp, char *str, int boolean)
 	return (i);
 }
 
-char	*westigation(char *west, char *buffer, x_list **tab, int boolean)
+char	*westigation(char *west, char *buffer, t_lst **tab, int boolean)
 {
 	char	*temp;
 	int		i;
@@ -94,7 +94,7 @@ char	*westigation(char *west, char *buffer, x_list **tab, int boolean)
 	return (free(temp), west);
 }
 
-char	*readit(int fd, char *west, x_list **tab)
+char	*readit(int fd, char *west, t_lst **tab)
 {
 	char	*buffer;
 	int		output;
@@ -121,7 +121,7 @@ char	*readit(int fd, char *west, x_list **tab)
 
 char	*get_next_line(int fd)
 {
-	x_list		*tab;
+	t_lst		*tab;
 	static char	*west = NULL;
 	char		*string;
 	int			i;

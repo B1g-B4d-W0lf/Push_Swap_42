@@ -1,30 +1,33 @@
-NAME_PUSH_SWAP= push_swap.exe
-
-SRC_PUSH_SWAP = push_swap.c moves.c
-
-HEADERFILES = push_swap.h 
-
+NAME = push_swap.exe
+SRC =	push_swap.c parse.c moves_a.c moves_b.c tempo_tools.c
+LIBFT = libft.a
+HEADERFILES = push_swap.h -ILibft/libft.h
+OBJFILES = $(SRC:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 
-OBJ_P = $(SRC_PUSH_SWAP:.c=.o)
-
-FLAG = -Wall -Wextra -Werror
-
-all: $(NAME_PUSH_SWAP)
-
-$(NAME_PUSH_SWAP): $(OBJ_P)
+$(NAME): $(OBJFILES)
 	make -C Libft
-	$(CC) -o $(NAME_PUSH_SWAP) -Llibft -lft $(OBJ_P)
+	mv Libft/libft.a .
+	$(CC) $(CFLAGS) $(OBJFILES) ${LIBFT} -o $(NAME)
 
-%.o: %.c
-	$(CC) -c $(FLAG) $< -o $@ $(HEADERFILES)
+all: $(NAME)
+
+%.o: ft_%.c $(HEADERFILES)
+	$(CC) -c $(CFLAGS) -o $@ $<
+	
+bonus: $(OBJFILES)
+	ar -rc $(NAME) $^
 
 clean:
 	make clean -C Libft
-	rm -f $(OBJ_P)
+	rm -f $(OBJFILES)
+	rm -f ${LIBFT}
 
-fclean: clean
+fclean:
 	make fclean -C Libft
-	rm -f $(NAME_PUSH_SWAP)
+	rm -f $(NAME) $(OBJFILES) ${LIBFT}
 
-.PHONY: clean fclean all
+re: fclean all
+	
+.PHONY: clean fclean all re bonus
