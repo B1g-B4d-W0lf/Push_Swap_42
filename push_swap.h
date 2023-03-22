@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/02/16 02:09:50 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/16 02:02:48 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ void	printlst(t_list *lst);
 void	printerror(void);
 void	clearlst(t_list **lst);
 int		main(int argc, char **argv);
+
+//parse
+void	checkdigits(char *argv, char *k, int bin);
 int		checkargv(int argc, char **argv, int i);
 t_list	*string(char *arg);
 t_list	*array(int argc, char **argv);
 t_list	*sora(int argc, char **argv);
+
+//moves
 void	swapa(t_list **lst);
 void	pusha(t_list **lsta, t_list **lstb);
 void	rotatea(t_list **lst);

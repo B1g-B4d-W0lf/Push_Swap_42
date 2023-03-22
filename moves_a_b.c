@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:45 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/02/16 02:09:43 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/16 02:04:57 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	douleswap(t_list **lsta, t_list **lstb)
 {
 	t_list	*temp;
-	
+
 	temp = (*lsta)->next;
 	(*lsta)->next = temp->next;
 	ft_lstadd_front(lsta, temp);

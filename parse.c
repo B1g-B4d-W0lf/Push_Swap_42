@@ -6,11 +6,41 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 22:32:35 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/02/15 23:43:00 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:32:31 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	checkdigits(char *argv, char *k, int bin)
+{
+	int	i;
+
+	i = 0;
+	if (bin == 0)
+	{
+		while (argv[i] != 0)
+		{
+			if (argv[i] >= '0' && argv[i] <= '9')
+				i++;
+			else if (argv [i] == '+' || argv[i] == '-')
+				i++;
+			else
+				printerror();
+		}
+	}
+	else if (bin == 1)
+	{
+		i = 0;
+		while ((argv[i] && k[i]) && (argv[i] == k[i]))
+			i++;
+		if (argv[i] != 0 || k[i] != 0)
+		{
+			free(k);
+			printerror();
+		}
+	}
+}
 
 int	checkargv(int argc, char **argv, int i)
 {
@@ -21,16 +51,20 @@ int	checkargv(int argc, char **argv, int i)
 	j = i + 1;
 	while (i != argc)
 	{
+		checkdigits(argv[i], 0, 0);
 		k = ft_atoi(argv[i]);
-		while (j != argc)
+		checkdigits(argv[i], ft_itoa(k), 1);
 		{
-			l = ft_atoi(argv[j]);
-			if (k == l)
-				return (0);
-			j++;
+			while (j != argc)
+			{
+				l = ft_atoi(argv[j]);
+				if (k == l)
+					return (0);
+				j++;
+			}
+			i++;
+			j = i + 1;
 		}
-		i++;
-		j = i + 1;
 	}
 	return (1);
 }
@@ -86,6 +120,6 @@ t_list	*sora(int argc, char **argv)
 		lst = string(argv[1]);
 	else if (argc > 2)
 		lst = array(argc, argv);
-	printf("c bon ou c pa bon\n");
+	printf("sora used\n");
 	return (lst);
 }
