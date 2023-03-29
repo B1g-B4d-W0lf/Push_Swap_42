@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:41 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/16 02:04:11 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/29 01:32:37 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	pusha(t_list **lsta, t_list **lstb)
 {
 	t_list	*temp;
 
-	temp = *lsta;
-	*lsta = (*lsta)->next;
-	ft_lstadd_front(lstb, temp);
+	temp = *lstb;
+	*lstb = (*lstb)->next;
+	ft_lstadd_front(lsta, temp);
 	return ;
 }
 

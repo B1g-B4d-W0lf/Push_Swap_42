@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/16 02:02:48 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/29 00:55:21 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,11 @@ void	reverserb(t_list **lst);
 void	douleswap(t_list **lsta, t_list **lstb);
 void	doublerotate(t_list **lsta, t_list **lstb);
 void	doublereverser(t_list **lsta, t_list **lstb);
+
+//diff
+int		findmax(t_list *lst);
+int		findmin(t_list *lst);
+int		diffint(t_list *lst, int i);
+int		compare(int i, int j);
 
 #endif
