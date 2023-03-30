@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 22:32:35 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/22 16:32:31 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/30 22:58:07 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ t_list	*sora(int argc, char **argv)
 		lst = string(argv[1]);
 	else if (argc > 2)
 		lst = array(argc, argv);
-	printf("sora used\n");
+	// printf("sora used\n");
 	return (lst);
 }
