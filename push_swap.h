@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/30 23:08:41 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/01 00:55:42 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		checkargv(int argc, char **argv, int i);
 t_list	*string(char *arg);
 t_list	*array(int argc, char **argv);
 t_list	*sora(int argc, char **argv);
+void	freetab(char **tab);
 
 //moves
 void	swapa(t_list **lst);
@@ -39,6 +40,7 @@ void	reverserb(t_list **lst);
 void	douleswap(t_list **lsta, t_list **lstb);
 void	doublerotate(t_list **lsta, t_list **lstb);
 void	doublereverser(t_list **lsta, t_list **lstb);
+void	triplereverse(t_list **lst);
 
 //diff
 int		findmax(t_list *lst);
@@ -49,7 +51,7 @@ int		compare(int i, int j);
 //algo
 void	sort(t_list **lst, t_list **lstb);
 void	cheapest(t_list **lst, t_list **lstb);
-void	finalmove(t_list **lst, t_list **lstb);
+void	finalmove(t_list **lst, t_list **lstb, int i, int j);
 void	moveit(t_list **lst, t_list **lstb, int i, int j);
 
 

@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 22:32:35 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/30 22:58:07 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/01 01:04:23 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	checkdigits(char *argv, char *k, int bin)
 	}
 	else if (bin == 1)
 	{
-		i = 0;
 		while ((argv[i] && k[i]) && (argv[i] == k[i]))
 			i++;
 		if (argv[i] != 0 || k[i] != 0)
@@ -44,27 +43,28 @@ void	checkdigits(char *argv, char *k, int bin)
 
 int	checkargv(int argc, char **argv, int i)
 {
-	int	j;
-	int	k;
-	int	l;
+	int		j;
+	int		k;
+	int		l;
+	char	*result;
 
 	j = i + 1;
 	while (i != argc)
 	{
 		checkdigits(argv[i], 0, 0);
 		k = ft_atoi(argv[i]);
-		checkdigits(argv[i], ft_itoa(k), 1);
+		result = ft_itoa(k);
+		checkdigits(argv[i], result, 1);
+		free(result);
+		while (j != argc)
 		{
-			while (j != argc)
-			{
-				l = ft_atoi(argv[j]);
-				if (k == l)
-					return (0);
-				j++;
-			}
-			i++;
-			j = i + 1;
+			l = ft_atoi(argv[j]);
+			if (k == l)
+				return (0);
+			j++;
 		}
+		i++;
+		j = i + 1;
 	}
 	return (1);
 }
@@ -90,6 +90,7 @@ t_list	*string(char *arg)
 		ft_lstadd_back(&tab, ft_lstnew(str));
 		i++;
 	}
+	freetab(temp);
 	return (tab);
 }
 
@@ -120,6 +121,5 @@ t_list	*sora(int argc, char **argv)
 		lst = string(argv[1]);
 	else if (argc > 2)
 		lst = array(argc, argv);
-	// printf("sora used\n");
 	return (lst);
 }

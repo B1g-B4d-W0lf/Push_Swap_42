@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 00:37:34 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/29 01:26:36 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/03/31 21:34:02 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	diffint(t_list *lst, int i)
 		k = i - lst->content;
 	fin = lst->content;
 	lst = lst->next;
-	while(lst)
+	while (lst)
 	{
 		if (lst->content > i)
 			j = lst->content - i;
@@ -72,7 +72,7 @@ int	diffint(t_list *lst, int i)
 int	compare(int i, int j)
 {
 	int	diff;
-	
+
 	if (i > j)
 		diff = i - j;
 	else if (i < j)
