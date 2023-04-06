@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/01 00:55:42 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:12:29 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ int		findmax(t_list *lst);
 int		findmin(t_list *lst);
 int		diffint(t_list *lst, int i);
 int		compare(int i, int j);
+int		supone(t_list *lst, int i);
 
 //algo
 void	sort(t_list **lst, t_list **lstb);
 void	cheapest(t_list **lst, t_list **lstb);
 void	finalmove(t_list **lst, t_list **lstb, int i, int j);
 void	moveit(t_list **lst, t_list **lstb, int i, int j);
+void	emptya(t_list **lst, t_list **lstb);
+void	whileit(t_list *lst, t_list *lstb);
 
 
 #endif

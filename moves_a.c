@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:41 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/31 23:18:54 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:39:04 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swapa(t_list **lst)
 	temp = (*lst)->next;
 	(*lst)->next = temp->next;
 	ft_lstadd_front(lst, temp);
-	ft_printf("sa\n");
+	//ft_printf("sa\n");
 	return ;
 }
 
@@ -30,7 +30,7 @@ void	pusha(t_list **lsta, t_list **lstb)
 	temp = *lstb;
 	*lstb = (*lstb)->next;
 	ft_lstadd_front(lsta, temp);
-	ft_printf("pa\n");
+	//ft_printf("pa\n");
 	return ;
 }
 
@@ -42,7 +42,7 @@ void	rotatea(t_list **lst)
 	*lst = (*lst)->next;
 	temp->next = NULL;
 	ft_lstadd_back(lst, temp);
-	ft_printf("ra\n");
+	//ft_printf("ra\n");
 	return ;
 }
 
@@ -57,6 +57,6 @@ void	reversera(t_list **lst)
 		tmp = tmp->next;
 	tmp->next = NULL;
 	ft_lstadd_front(lst, temp);
-	ft_printf("rra\n");
+	//ft_printf("rra\n");
 	return ;
 }

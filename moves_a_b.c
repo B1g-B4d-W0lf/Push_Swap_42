@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:45 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/03/31 21:24:56 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/05 22:38:45 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	douleswap(t_list **lsta, t_list **lstb)
 	temp = (*lstb)->next;
 	(*lstb)->next = temp->next;
 	ft_lstadd_front(lstb, temp);
-	ft_printf("ss\n");
+	//ft_printf("ss\n");
 	return ;
 }
 
@@ -38,7 +38,7 @@ void	doublerotate(t_list **lsta, t_list **lstb)
 	*lstb = (*lstb)->next;
 	temp->next = NULL;
 	ft_lstadd_back(lstb, temp);
-	ft_printf("rr\n");
+	//ft_printf("rr\n");
 	return ;
 }
 
@@ -59,6 +59,6 @@ void	doublereverser(t_list **lsta, t_list **lstb)
 		tmp = tmp->next;
 	tmp->next = NULL;
 	ft_lstadd_front(lstb, temp);
-	ft_printf("rrr\n");
+	//ft_printf("rrr\n");
 	return ;
 }

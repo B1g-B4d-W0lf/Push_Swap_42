@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:11 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/01 01:24:07 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:17:25 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ int	main(int argc, char **argv)
 	t_list	*lst;
 	t_list	*lstb;
 
+	if (argc == 1)
+		exit(0);
 	lstb = NULL;
 	lst = sora(argc, argv);
 	sort(&lst, &lstb);
-	//printlst(lst);
-	//printlst(lstb);
+	printlst(lst);
+	printlst(lstb);
 	clearlst(&lstb);
 	clearlst(&lst);
 	return (0);
