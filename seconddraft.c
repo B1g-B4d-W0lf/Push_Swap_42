@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 01:01:32 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/06 01:56:17 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:26:40 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,42 +69,49 @@ int	calculate(t_list *lst, t_list *lstb, int current, int i)
 {
 	int		indexb;
 	int		indexa;
+	int		sizea;
+	int		sizeb;
 
 	indexb = 0;
 	indexa = 0;
-	if (ft_lstsize(lstb)/2 > findpos(lstb, current) && ft_lstsize(lst)/2 > findpos(lst, i))
+	sizea = ft_lstsize(lst);
+	sizeb = ft_lstsize(lstb);
+	if (sizeb/2 >= findpos(lstb, current) && sizea/2 >= findpos(lst, i))
 	{
 		indexb += findpos(lstb, current);
 		indexa += findpos(lst, i);
 		if (indexa > indexb)
 			indexa = indexa - indexb;
-		if (indexa < indexb)
+		else if (indexa < indexb)
+			indexb = indexb - indexa;
+		else if (indexa == indexb)
 			indexb = indexb - indexa;
 	}
-	if (ft_lstsize(lstb)/2 < findpos(lstb, current) && ft_lstsize(lst)/2 < findpos(lst, i))
+	else if (sizeb/2 <= findpos(lstb, current) && sizea/2 <= findpos(lst, i))
 	{
-		indexb += (ft_lstsize(lstb) - findpos(lstb, current));
-		indexa += (ft_lstsize(lst) - findpos(lst, i));
+		indexb += (sizeb - findpos(lstb, current));
+		indexa += (sizea - findpos(lst, i));
 		if (indexa > indexb)
 			indexa = indexa - indexb;
-		if (indexa < indexb)
+		else if (indexa < indexb)
+			indexb = indexb - indexa;
+		else if (indexa == indexb)
 			indexb = indexb - indexa;
 	}
-	if (ft_lstsize(lst)/2 > findpos(lst, i) && ft_lstsize(lstb)/2 < findpos(lstb, current))
+	else if (sizea/2 >= findpos(lst, i) && sizeb/2 <= findpos(lstb, current))
 	{
-		indexb += (ft_lstsize(lstb) - findpos(lstb, current));
+		indexb += (sizeb - findpos(lstb, current));
 		indexa += findpos(lst, i);
 	}
-	if (ft_lstsize(lst)/2 < findpos(lst, i) && ft_lstsize(lstb)/2 > findpos(lstb, current))
+	else if (sizea/2 <= findpos(lst, i) && sizeb/2 >= findpos(lstb, current))
 	{
-		indexa += (ft_lstsize(lst) - findpos(lst, i));
+		indexa += (sizea - findpos(lst, i));
 		indexb += findpos(lstb, current);
 	}
-	ft_printf("indexa = %d && indexb = %d\n", indexa, indexb);
 	return (indexa + indexb);
 }
 
-void	whileit(t_list *lst, t_list *lstb)
+int	whileit(t_list *lst, t_list *lstb)
 {
 	int		i;
 	int		moves;
@@ -113,31 +120,29 @@ void	whileit(t_list *lst, t_list *lstb)
 	t_list	*temp;
 
 	temp = lstb;
-	needed = 0;
+	needed = lstb->content;
 	while (lstb)
 	{
 		i = supone(lst, lstb->content);
-		if(lstb->content == temp->content)
+		if(lstb->content == temp->content && lstb)
 		{
 			lowest = calculate(lst, temp, lstb->content, i);
-			needed = lstb->content;
 		}
 		moves = calculate(lst, temp, lstb->content, i);
-		if (moves < lowest)
+		if (moves < lowest && lstb)
 		{
 			needed = lstb->content;
 		}
-		ft_printf("%d\n", needed);
-		ft_printf("%d = %d\n", lstb->content, i);
 		lstb = lstb->next;
 	}
+	return (needed);
 }
 
 void	emptya(t_list **lst, t_list **lstb)
 {
-	while (lst && ft_lstsize(*lst) > 3)
+	while (ft_lstsize(*lst) > 3)
 	{
-		pushb(lst, lstb);
+		pushb(lst,lstb);
 	}
 }
 

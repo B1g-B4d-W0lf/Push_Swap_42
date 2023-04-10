@@ -1,5 +1,5 @@
 NAME = push_swap
-SRC =	push_swap.c parse.c moves_a.c moves_b.c tempo_tools.c diff.c draft.c seconddraft.c
+SRC =	push_swap.c parse.c moves_a.c moves_b.c moves_a_b.c tempo_tools.c diff.c draft.c seconddraft.c
 LIBFT = ./Libft/libft.a
 HEADERFILES = push_swap.h -ILibft/libft.h
 OBJFILES = $(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:11 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/05 23:17:25 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/10 00:52:11 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(int argc, char **argv)
 	lstb = NULL;
 	lst = sora(argc, argv);
 	sort(&lst, &lstb);
-	printlst(lst);
-	printlst(lstb);
+	//printlst(lst);
+	//printlst(lstb);
 	clearlst(&lstb);
 	clearlst(&lst);
 	return (0);

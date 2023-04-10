@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/05 23:12:29 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:21:15 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	cheapest(t_list **lst, t_list **lstb);
 void	finalmove(t_list **lst, t_list **lstb, int i, int j);
 void	moveit(t_list **lst, t_list **lstb, int i, int j);
 void	emptya(t_list **lst, t_list **lstb);
-void	whileit(t_list *lst, t_list *lstb);
+int		whileit(t_list *lst, t_list *lstb);
+int		findpos(t_list *lst, int i);
+void	efficient(t_list **lst, t_list **lstb, int moving);
 
 
 #endif
