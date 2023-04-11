@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:11 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/10 00:52:11 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/11 02:15:23 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,31 @@ void	clearlst(t_list **lst)
 	return ;
 }
 
+void	printlst(t_list *lst)
+{
+	ft_printf("----\n");
+	while (lst != NULL)
+	{
+		ft_printf("%d\n", lst->content);
+		lst = lst->next;
+	}
+	ft_printf("----\n");
+	return ;
+}
+
+void	freetab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*lst;
@@ -44,8 +69,6 @@ int	main(int argc, char **argv)
 	lstb = NULL;
 	lst = sora(argc, argv);
 	sort(&lst, &lstb);
-	//printlst(lst);
-	//printlst(lstb);
 	clearlst(&lstb);
 	clearlst(&lst);
 	return (0);

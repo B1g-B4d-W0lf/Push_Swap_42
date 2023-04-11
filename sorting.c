@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 23:09:57 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/10 01:20:44 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/11 01:15:49 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,48 +17,22 @@ void	efficient(t_list **lst, t_list **lstb, int moving)
 	int	sup;
 	int	sizea;
 	int	sizeb;
-	
+
 	sup = supone(*lst, moving);
 	sizea = ft_lstsize(*lst);
 	sizeb = ft_lstsize(*lstb);
-	if (sizeb/2 >= findpos(*lstb, moving) && sizea/2 >= findpos(*lst, sup))
-	{
-		while ((moving != (*lstb)->content || sup != (*lst)->content) 
-			&& ((*lstb)->content != moving && (*lst)->content != sup))
-			doublerotate(lst, lstb);
-		while (moving != (*lstb)->content)
-			rotateb(lstb);
-		while (sup != (*lst)->content)
-			rotatea(lst);
-		pusha(lst, lstb);
-	}
-	else if (sizeb/2 <= findpos(*lstb, moving) && sizea/2 <= findpos(*lst, sup))
-	{
-		while ((moving != (*lstb)->content || sup != (*lst)->content)
-			&& ((*lstb)->content != moving && (*lst)->content != sup))
-			doublereverser(lst, lstb);
-		while (moving != (*lstb)->content)
-			reverserb(lstb);
-		while (sup != (*lst)->content)
-			reversera(lst);
-		pusha(lst, lstb);
-	}
-	else if (sizeb/2 >= findpos(*lstb, moving) && sizea/2 <= findpos(*lst, sup))
-	{
-		while (moving != (*lstb)->content)
-			rotateb(lstb);
-		while (sup != (*lst)->content)
-			reversera(lst);
-		pusha(lst, lstb);
-	}
-	else if (sizeb/2 <= findpos(*lstb, moving) && sizea/2 >= findpos(*lst, sup))
-	{
-		while (moving != (*lstb)->content)
-			reverserb(lstb);
-		while (sup != (*lst)->content)
-			rotatea(lst);
-		pusha(lst, lstb);
-	}	
+	if (sizeb / 2 >= findpos(*lstb, moving)
+		&& sizea / 2 >= findpos(*lst, sup))
+		bothinf(lst, lstb, moving, sup);
+	else if (sizeb / 2 <= findpos(*lstb, moving)
+		&& sizea / 2 <= findpos(*lst, sup))
+		bothsup(lst, lstb, moving, sup);
+	else if (sizeb / 2 >= findpos(*lstb, moving)
+		&& sizea / 2 <= findpos(*lst, sup))
+		infsup(lst, lstb, moving, sup);
+	else if (sizeb / 2 <= findpos(*lstb, moving)
+		&& sizea / 2 >= findpos(*lst, sup))
+		supinf(lst, lstb, moving, sup);
 }
 
 void	lastmoves(t_list **lst)
@@ -71,7 +45,7 @@ void	lastmoves(t_list **lst)
 		while ((*lst)->content != min)
 			reversera(lst);
 	}
-	else if (findpos(*lst, min) <= ft_lstsize(*lst))	
+	else if (findpos(*lst, min) <= ft_lstsize(*lst))
 	{
 		while ((*lst)->content != min)
 			rotatea(lst);
@@ -112,7 +86,7 @@ void	sort(t_list **lst, t_list **lstb)
 		sortthree(lst);
 		while (*lstb)
 		{
-			moving = whileit(*lst, *lstb);			
+			moving = whileit(*lst, *lstb);
 			efficient(lst, lstb, moving);
 		}
 		lastmoves(lst);

@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/10 01:21:15 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/11 02:04:07 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,14 @@ int		whileit(t_list *lst, t_list *lstb);
 int		findpos(t_list *lst, int i);
 void	efficient(t_list **lst, t_list **lstb, int moving);
 
+//operations&calculs
+void	bothinf(t_list **lst, t_list **lstb, int moving, int sup);
+void	bothsup(t_list **lst, t_list **lstb, int moving, int sup);
+void	infsup(t_list **lst, t_list **lstb, int moving, int sup);
+void	supinf(t_list **lst, t_list **lstb, int moving, int sup);
+int		firstop(t_list *lst, t_list *lstb, int current, int sup);
+int		secondop(t_list *lst, t_list *lstb, int current, int sup);
+int		thirdop(t_list *lst, t_list *lstb, int current, int sup);
+int		fourthop(t_list *lst, t_list *lstb, int current, int sup);
 
 #endif
