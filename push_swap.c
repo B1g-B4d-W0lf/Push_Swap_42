@@ -6,15 +6,21 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:11 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/11 02:15:23 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/12 02:40:06 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	printerror(void)
+void	printerror(t_list **lst, char **tab, char *str)
 {
-	ft_printf("ERROR BITCH TRY AGAIN");
+	if (lst)
+		clearlst(lst);
+	if (tab)
+		freetab(tab);
+	if (str)
+		free(str);
+	ft_printf("Error\n");
 	exit(0);
 }
 
@@ -67,7 +73,8 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		exit(0);
 	lstb = NULL;
-	lst = sora(argc, argv);
+	lst = string(argc, argv);
+	finalcheck(lst);
 	sort(&lst, &lstb);
 	clearlst(&lstb);
 	clearlst(&lst);

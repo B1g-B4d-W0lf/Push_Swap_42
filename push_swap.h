@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/11 02:04:07 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/12 02:28:04 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,15 @@
 # include "./Libft/libft.h"
 
 void	printlst(t_list *lst);
-void	printerror(void);
+void	printerror(t_list **lst, char **tab, char *str);
 void	clearlst(t_list **lst);
 int		main(int argc, char **argv);
 
 //parse
-void	checkdigits(char *argv, char *k, int bin);
+int		checkdigits(char *argv, char *k, int bin);
 int		checkargv(int argc, char **argv, int i);
-t_list	*string(char *arg);
-t_list	*array(int argc, char **argv);
-t_list	*sora(int argc, char **argv);
+void	finalcheck(t_list *lst);
+t_list	*string(int argc, char **argv);
 void	freetab(char **tab);
 
 //moves

@@ -4,3 +4,4 @@ imgui.ini
 checker_linux
 .gitignore
 .gitignore.swp
+.vscode

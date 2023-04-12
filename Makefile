@@ -7,7 +7,7 @@ calculating.c algomoves.c operations.c
 LIBFT = ./Libft/libft.a
 HEADERFILES = push_swap.h -ILibft/libft.h
 OBJFILES = $(SRC:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 CC = gcc
 
 $(NAME): $(OBJFILES)

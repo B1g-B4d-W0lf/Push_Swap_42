@@ -5,14 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 22:32:35 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/01 01:04:23 by wfreulon         ###   ########.fr       */
+/*   Created: 2023/04/11 23:37:23 by wfreulon          #+#    #+#             */
+/*   Updated: 2023/04/12 02:58:39 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	checkdigits(char *argv, char *k, int bin)
+void	finalcheck(t_list *lst)
+{
+	int		i;
+	int		j;
+	t_list	*temp;
+	t_list	*head;
+
+	temp = lst->next;
+	head = lst;
+	while (lst->next != NULL)
+	{
+		i = lst->content;
+		while (temp)
+		{
+			j = temp->content;
+			if (j == i)
+			{
+				printerror(&head, 0, 0);
+			}
+			temp = temp->next;
+		}
+		lst = lst->next;
+		temp = lst->next;
+	}
+}
+
+int	checkdigits(char *argv, char *k, int bin)
 {
 	int	i;
 
@@ -26,7 +52,7 @@ void	checkdigits(char *argv, char *k, int bin)
 			else if (argv [i] == '+' || argv[i] == '-')
 				i++;
 			else
-				printerror();
+				return (0);
 		}
 	}
 	else if (bin == 1)
@@ -34,92 +60,59 @@ void	checkdigits(char *argv, char *k, int bin)
 		while ((argv[i] && k[i]) && (argv[i] == k[i]))
 			i++;
 		if (argv[i] != 0 || k[i] != 0)
-		{
-			free(k);
-			printerror();
-		}
-	}
-}
-
-int	checkargv(int argc, char **argv, int i)
-{
-	int		j;
-	int		k;
-	int		l;
-	char	*result;
-
-	j = i + 1;
-	while (i != argc)
-	{
-		checkdigits(argv[i], 0, 0);
-		k = ft_atoi(argv[i]);
-		result = ft_itoa(k);
-		checkdigits(argv[i], result, 1);
-		free(result);
-		while (j != argc)
-		{
-			l = ft_atoi(argv[j]);
-			if (k == l)
-				return (0);
-			j++;
-		}
-		i++;
-		j = i + 1;
+			return (free(k), 0);
 	}
 	return (1);
 }
 
-t_list	*string(char *arg)
+int	checkargv(int argc, char **argv, int i)
+{
+	int		k;
+	char	*result;
+
+	while (i != argc)
+	{
+		if (checkdigits(argv[i], 0, 0) == 0)
+			return (0);
+		k = ft_atoi(argv[i]);
+		result = ft_itoa(k);
+		if (checkdigits(argv[i], result, 1) == 0)
+			return (0);
+		free(result);
+		i++;
+	}
+	return (1);
+}
+
+void	littlekitten(int *str, t_list **tab, char **temp)
+{
+	str[2] = ft_atoi(temp[str[1]]);
+	ft_lstadd_back(tab, ft_lstnew(str[2]));
+	str[1]++;
+}
+
+t_list	*string(int argc, char **argv)
 {
 	t_list	*tab;
 	char	**temp;
-	int		str;
-	int		i;
+	int		str[3];
 
 	tab = NULL;
-	temp = ft_split(arg, ' ');
-	i = 0;
-	while (temp[i] != NULL)
-		i++;
-	if (checkargv(i, temp, 0) == 0)
-		printerror();
-	i = 0;
-	while (temp[i] != NULL)
+	str[0] = 1;
+	str[1] = 0;
+	while (str[0] != argc)
 	{
-		str = ft_atoi(temp[i]);
-		ft_lstadd_back(&tab, ft_lstnew(str));
-		i++;
-	}
-	freetab(temp);
-	return (tab);
-}
-
-t_list	*array(int argc, char **argv)
-{
-	t_list	*tab;
-	int		i;
-	int		j;
-
-	tab = NULL;
-	i = 1;
-	if (checkargv(argc, argv, 1) == 0)
-		printerror();
-	while (i < argc)
-	{
-		j = ft_atoi(argv[i]);
-		ft_lstadd_back(&tab, ft_lstnew(j));
-		i++;
+		temp = ft_split(argv[str[0]], ' ');
+		str[0]++;
+		while (temp[str[1]] != NULL)
+			str[1]++;
+		if (checkargv(str[1], temp, 0) == 0)
+			printerror(&tab, temp, 0);
+		str[1] = 0;
+		while (temp[str[1]] != NULL)
+			littlekitten(str, &tab, temp);
+		str[1] = 0;
+		freetab(temp);
 	}
 	return (tab);
-}
-
-t_list	*sora(int argc, char **argv)
-{
-	t_list	*lst;
-
-	if (argc == 2)
-		lst = string(argv[1]);
-	else if (argc > 2)
-		lst = array(argc, argv);
-	return (lst);
 }
