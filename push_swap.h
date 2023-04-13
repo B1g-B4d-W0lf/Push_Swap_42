@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/12 02:28:04 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/13 02:58:37 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	swapb(t_list **lst);
 void	pushb(t_list **lsta, t_list **lstb);
 void	rotateb(t_list **lst);
 void	reverserb(t_list **lst);
-void	douleswap(t_list **lsta, t_list **lstb);
+void	doubleswap(t_list **lsta, t_list **lstb);
 void	doublerotate(t_list **lsta, t_list **lstb);
 void	doublereverser(t_list **lsta, t_list **lstb);
 void	triplereverse(t_list **lst);

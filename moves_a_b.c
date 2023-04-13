@@ -6,13 +6,13 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:45 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/10 00:52:26 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/13 02:58:24 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	douleswap(t_list **lsta, t_list **lstb)
+void	doubleswap(t_list **lsta, t_list **lstb)
 {
 	t_list	*temp;
 

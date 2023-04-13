@@ -31,9 +31,6 @@ all: $(NAME)
 
 %.o: ft_%.c $(HEADERFILES)
 	$(CC) -c $(CFLAGS) -o $@ $<
-	
-bonus: $(OBJFILES)
-	ar -rc $(NAME) $^
 
 clean:
 	rm -f $(OBJFILES)
