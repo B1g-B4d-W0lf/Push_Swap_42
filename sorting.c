@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draft.c                                            :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 23:09:57 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/11 01:15:49 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:51:07 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,11 @@ void	sort(t_list **lst, t_list **lstb)
 		}
 		lastmoves(lst);
 	}
+	if (ft_lstsize(*lst) < 3)
+	{
+		if (ft_lstsize(*lst) == 2
+			&& (*lst)->content > (*lst)->next->content)
+			swapa(lst);
+	}
+	return ;
 }

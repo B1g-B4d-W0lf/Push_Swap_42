@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:11 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/12 02:40:06 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 00:49:47 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,6 @@ void	clearlst(t_list **lst)
 	return ;
 }
 
-void	printlst(t_list *lst)
-{
-	ft_printf("----\n");
-	while (lst != NULL)
-	{
-		ft_printf("%d\n", lst->content);
-		lst = lst->next;
-	}
-	ft_printf("----\n");
-	return ;
-}
-
 void	freetab(char **tab)
 {
 	int	i;
@@ -65,6 +53,22 @@ void	freetab(char **tab)
 	free(tab);
 }
 
+int	checking(t_list *lst)
+{
+	t_list	*temp;
+
+	temp = lst;
+	lst = lst->next;
+	while (lst)
+	{
+		if (temp->content > lst->content)
+			return (0);
+		lst = lst->next;
+		temp = temp->next;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*lst;
@@ -75,7 +79,8 @@ int	main(int argc, char **argv)
 	lstb = NULL;
 	lst = string(argc, argv);
 	finalcheck(lst);
-	sort(&lst, &lstb);
+	if (checking(lst) == 0)
+		sort(&lst, &lstb);
 	clearlst(&lstb);
 	clearlst(&lst);
 	return (0);
