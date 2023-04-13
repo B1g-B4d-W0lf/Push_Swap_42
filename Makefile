@@ -7,7 +7,7 @@ diff.c sorting.c \
 calculating.c algomoves.c operations.c
 SRC_BONUS = ./Checker/parse_bonus.c \
 ./Checker/moves_a_bonus.c ./Checker/moves_b_bonus.c ./Checker/moves_a_b_bonus.c \
-./Checker/checker.c 
+./Checker/checker.c ./Checker/applying.c
 LIBFT = ./Libft/libft.a
 HEADERFILES = -I push_swap.h Libft/libft.h Checker/push_swap_bonus.h
 OBJFILES = $(SRC:.c=.o)
