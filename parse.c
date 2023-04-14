@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 23:37:23 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/12 02:58:39 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 04:05:46 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	finalcheck(t_list *lst)
 			j = temp->content;
 			if (j == i)
 			{
-				printerror(&head, 0, 0);
+				printerror(&head, 0, 0, 0);
 			}
 			temp = temp->next;
 		}
@@ -107,7 +107,7 @@ t_list	*string(int argc, char **argv)
 		while (temp[str[1]] != NULL)
 			str[1]++;
 		if (checkargv(str[1], temp, 0) == 0)
-			printerror(&tab, temp, 0);
+			printerror(&tab, temp, 0, 0);
 		str[1] = 0;
 		while (temp[str[1]] != NULL)
 			littlekitten(str, &tab, temp);

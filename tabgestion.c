@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 02:47:13 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 03:51:22 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 04:04:36 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	emptya(t_list **lst, t_list **lstb)
 	{
 		size = ft_lstsize(*lst);
 		tab = malloc((size) * sizeof(int));
+		if (!tab)
+			printerror(lst, 0, 0, lstb);
 		lsttotab(*lst, tab);
 		bubblesort(tab, size);
 		mediane = tab[size / 2];
