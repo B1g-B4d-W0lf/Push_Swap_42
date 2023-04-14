@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 23:09:57 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 00:51:07 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 03:04:17 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,7 @@ void	sort(t_list **lst, t_list **lstb)
 	int	moving;
 
 	if (ft_lstsize(*lst) > 3)
-	{
-		pushb(lst, lstb);
-		pushb(lst, lstb);
 		emptya(lst, lstb);
-	}
 	if (ft_lstsize(*lst) == 3)
 	{
 		sortthree(lst);

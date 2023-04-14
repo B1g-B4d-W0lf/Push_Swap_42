@@ -4,7 +4,8 @@ SRC = push_swap.c \
 parse.c \
 moves_a.c moves_b.c moves_a_b.c \
 diff.c sorting.c \
-calculating.c algomoves.c operations.c
+calculating.c algomoves.c operations.c \
+tabgestion.c
 SRC_BONUS = ./Checker/parse_bonus.c \
 ./Checker/moves_a_bonus.c ./Checker/moves_b_bonus.c ./Checker/moves_a_b_bonus.c \
 ./Checker/checker.c ./Checker/applying.c
