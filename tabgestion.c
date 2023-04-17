@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 02:47:13 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 04:04:36 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:24:37 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	bubblesort(int *tab, int size)
 	j = 1;
 	while (checktab(tab, size) == 0)
 	{
-		if (tab[i] > tab[j])
+		if (j < size && tab[i] > tab[j])
 		{
 			temp = tab[i];
 			tab[i] = tab[j];

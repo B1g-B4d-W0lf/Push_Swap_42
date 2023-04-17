@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 01:49:20 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 00:35:40 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:40:39 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	freetab(char **tab)
 	free(tab);
 }
 
-void	printerror(t_list **lst, char **tab, char *str)
+void	printerror(t_list **lst, char **tab, char *str, t_list **lstb)
 {
 	if (lst)
 		clearlst(lst);
+	if (lstb)
+		clearlst(lstb);
 	if (tab)
 		freetab(tab);
 	if (str)

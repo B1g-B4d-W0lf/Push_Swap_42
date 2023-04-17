@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 00:07:29 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 00:30:25 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:46:12 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	printlst(t_list *lst)
 	}
 	ft_printf("----\n");
 	return ;
+}
+
+void	applynd(t_list **lst, t_list **lstb, char *moves, int size)
+{
+	if (ft_strncmp(moves, "rra\n", size) == 0)
+		reversera(lst);
+	else if (ft_strncmp(moves, "rrb\n", size) == 0)
+		reverserb(lstb);
+	else if (ft_strncmp(moves, "rrr\n", size) == 0)
+		doublereverser(lst, lstb);
+	else
+		printerror(lst, 0, moves, lstb);
 }
 
 void	applymoves(t_list **lst, t_list **lstb, char *moves)
@@ -45,10 +57,8 @@ void	applymoves(t_list **lst, t_list **lstb, char *moves)
 		pusha(lst, lstb);
 	else if (ft_strncmp(moves, "pb\n", size) == 0)
 		pushb(lst, lstb);
-	else if (ft_strncmp(moves, "rra\n", size) == 0)
-		reversera(lst);
-	else if (ft_strncmp(moves, "rrb\n", size) == 0)
-		reverserb(lstb);
-	else if (ft_strncmp(moves, "rrr\n", size) == 0)
-		doublereverser(lst, lstb);
+	else if (size == 4)
+		applynd(lst, lstb, moves, size);
+	else
+		printerror(lst, 0, moves, lstb);
 }

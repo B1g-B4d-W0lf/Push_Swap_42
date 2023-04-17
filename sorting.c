@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 23:09:57 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 03:04:17 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:49:09 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,18 @@ void	efficient(t_list **lst, t_list **lstb, int moving)
 void	lastmoves(t_list **lst)
 {
 	int	min;
+	int	size;
+	int	pos;
 
+	size = ft_lstsize(*lst);
 	min = findmin(*lst);
-	if (findpos(*lst, min) >= ft_lstsize(*lst))
+	pos = findpos(*lst, min);
+	if (pos >= size / 2)
 	{
 		while ((*lst)->content != min)
 			reversera(lst);
 	}
-	else if (findpos(*lst, min) <= ft_lstsize(*lst))
+	else if (pos <= size / 2)
 	{
 		while ((*lst)->content != min)
 			rotatea(lst);

@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 00:37:43 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:09:30 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../Libft/libft.h"
 
 void	printlst(t_list *lst);
-void	printerror(t_list **lst, char **tab, char *str);
+void	printerror(t_list **lst, char **tab, char *str, t_list **lstb);
 void	clearlst(t_list **lst);
 int		main(int argc, char **argv);
 

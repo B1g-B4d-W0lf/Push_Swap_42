@@ -1,74 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 23:37:23 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/13 00:39:57 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/17 02:28:38 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	finalcheck(t_list *lst)
+char	*actualint(char *argv, int i, int size, char **arg)
 {
-	int		i;
 	int		j;
-	t_list	*temp;
-	t_list	*head;
+	char	*temp;
 
-	temp = lst->next;
-	head = lst;
-	while (lst->next != NULL)
+	j = i;
+	while (argv[i])
 	{
-		i = lst->content;
-		while (temp)
-		{
-			j = temp->content;
-			if (j == i)
-			{
-				printerror(&head, 0, 0);
-			}
-			temp = temp->next;
-		}
-		lst = lst->next;
-		temp = lst->next;
+		i++;
+		size++;
 	}
+		i = j;
+		j = 0;
+	temp = malloc((size +1) * (sizeof(char)));
+	if (!temp)
+		printerror(0, arg, argv, 0);
+	if (argv[0] == '-')
+	{
+		temp[j] = argv[0];
+		j++;
+	}
+	while (argv[i])
+		temp[j++] = argv[i++];
+	temp [j] = '\0';
+	return (temp);
 }
 
-int	checkdigits(char *argv, char *k, int bin)
+char	*noextrazero(char *argv, char **arg)
 {
-	int	i;
+	int		i;
+	int		size;
+	char	*temp;
 
 	i = 0;
-	if (bin == 0)
+	size = 0;
+	if (argv[0] == '-')
 	{
-		while (argv[i] != 0)
-		{
-			if (argv[i] >= '0' && argv[i] <= '9')
-				i++;
-			else if (argv [i] == '+' || argv[i] == '-')
-				i++;
-			else
-				return (0);
-		}
-	}
-	else if (bin == 1)
-	{
-		while ((argv[i] && k[i]) && (argv[i] == k[i]))
+		i++;
+		size++;
+		while (argv[i] == '0')
 			i++;
-		if (argv[i] != 0 || k[i] != 0)
-			return (free(k), 0);
 	}
-	return (1);
+	else if (argv[0] == '0' && argv[1] != '\0')
+		while (argv[i] == '0')
+			i++;
+	else if (argv[0] == '0' && argv[1] == '\0')
+		size++;
+	temp = actualint(argv, i, size, arg);
+	return (temp);
 }
 
 int	checkargv(int argc, char **argv, int i)
 {
 	int		k;
 	char	*result;
+	char	*temp;
 
 	while (i != argc)
 	{
@@ -76,9 +75,11 @@ int	checkargv(int argc, char **argv, int i)
 			return (0);
 		k = ft_atoi(argv[i]);
 		result = ft_itoa(k);
-		if (checkdigits(argv[i], result, 1) == 0)
+		temp = noextrazero(argv[i], argv);
+		if (checkdigits(temp, result, 1) == 0)
 			return (0);
 		free(result);
+		free (temp);
 		i++;
 	}
 	return (1);
@@ -107,7 +108,7 @@ t_list	*string(int argc, char **argv)
 		while (temp[str[1]] != NULL)
 			str[1]++;
 		if (checkargv(str[1], temp, 0) == 0)
-			printerror(&tab, temp, 0);
+			printerror(&tab, temp, 0, 0);
 		str[1] = 0;
 		while (temp[str[1]] != NULL)
 			littlekitten(str, &tab, temp);
