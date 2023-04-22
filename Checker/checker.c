@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 01:49:20 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/17 02:40:39 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/21 23:28:04 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	main(int argc, char **argv)
 	t_list	*lstb;
 	char	*moves;
 
+	if (argc == 1)
+		exit(0);
 	lstb = NULL;
 	lst = string(argc, argv);
 	finalcheck(lst);

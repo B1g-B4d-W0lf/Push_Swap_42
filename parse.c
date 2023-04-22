@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 23:37:23 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/17 02:29:21 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/22 01:17:16 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*noextrazero(char *argv, char **arg)
 
 	i = 0;
 	size = 0;
-	if (argv[0] == '-')
+	if (argv[0] == '-' || argv[0] == '+')
 	{
 		i++;
 		size++;
@@ -71,15 +71,18 @@ int	checkargv(int argc, char **argv, int i)
 
 	while (i != argc)
 	{
-		if (checkdigits(argv[i], 0, 0) == 0)
+		if (checkdigits(argv[i]) == 0)
 			return (0);
 		k = ft_atoi(argv[i]);
-		result = ft_itoa(k);
-		temp = noextrazero(argv[i], argv);
-		if (checkdigits(temp, result, 1) == 0)
-			return (0);
-		free(result);
-		free (temp);
+		if (k != 0)
+		{
+			result = ft_itoa(k);
+			temp = noextrazero(argv[i], argv);
+			if (checkbis(temp, result) == 0)
+				return (free (temp), 0);
+			free(result);
+			free (temp);
+		}	
 		i++;
 	}
 	return (1);

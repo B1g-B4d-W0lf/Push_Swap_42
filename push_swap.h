@@ -6,7 +6,7 @@
 /*   By: wfreulon <wfreulon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 02:40:50 by wfreulon          #+#    #+#             */
-/*   Updated: 2023/04/14 04:03:42 by wfreulon         ###   ########.fr       */
+/*   Updated: 2023/04/22 01:17:34 by wfreulon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	clearlst(t_list **lst);
 int		main(int argc, char **argv);
 
 //parse
-int		checkdigits(char *argv, char *k, int bin);
+int		checkdigits(char *argv);
 int		checkargv(int argc, char **argv, int i);
 void	finalcheck(t_list *lst);
 t_list	*string(int argc, char **argv);
 void	freetab(char **tab);
+int		checkbis(char *argv, char *k);
 
 //moves
 void	swapa(t_list **lst);
